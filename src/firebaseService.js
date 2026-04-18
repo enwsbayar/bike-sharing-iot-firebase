@@ -14,7 +14,6 @@ async function clearCollection() {
   await batch.commit();
   console.log('🗑️ Cleared old bike data from Firestore');
 }
-
 async function saveBikeData(data) {
   try {
     await db.collection('bike_telemetry').add({
