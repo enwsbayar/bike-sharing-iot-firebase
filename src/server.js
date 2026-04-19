@@ -1,6 +1,6 @@
 const WebSocket = require("ws");
 const { bikes, generateBikeData } = require("./simulator");
-const { sendToKinesis } = require("./firebaseService");
+const { saveBikeData } = require("./firebaseService");
 
 const PORT = 8080;
 const wss = new WebSocket.Server({ port: PORT });
@@ -27,8 +27,8 @@ setInterval(() => {
       }
     });
 
-    // Send to AWS Kinesis
-    sendToKinesis(data);
+    // Save to Firebase Firestore
+    saveBikeData(data);
 
     console.log(
       `📡 Sent: ${data.bike_id} | Speed: ${data.speed_kmh} km/h | Battery: ${data.battery}% | Status: ${data.status}`,
