@@ -1,34 +1,43 @@
-# Bike Sharing IoT - Real-Time Data Streaming
+# 🚲 Bike Sharing IoT — Real-Time Data Streaming
 
-Real-time bike sharing IoT simulation using WebSocket and AWS (Kinesis, Lambda, DynamoDB).
+Real-time bike sharing IoT simulation using WebSocket, Firebase Firestore, and a live dashboard.
 
-## Architecture
+## 🏗️ Architecture
 
 ```
-[IoT Bike Simulator] → [WebSocket Server] → [AWS Kinesis] → [Lambda] → [DynamoDB]
+[IoT Bike Simulator] → [WebSocket Server] → [Firebase Firestore]
+                              ↓
+                     [Live Web Dashboard]
 ```
 
-## Technologies
+## 🛠️ Technologies
 
 - **Backend:** Node.js
 - **Protocol:** WebSocket
-- **Cloud:** AWS (Kinesis, Lambda, DynamoDB)
-- **Libraries:** ws, aws-sdk, uuid, dotenv
+- **Cloud Database:** Firebase Firestore
+- **Frontend:** HTML, CSS, JavaScript
+- **Map:** Leaflet.js + OpenStreetMap
+- **Libraries:** ws, firebase-admin, uuid, dotenv
 
-## Project Structure
+## 📁 Project Structure
 
 ```
 bike-sharing-iot-aws/
 ├── src/
 │   ├── simulator.js        # IoT bike sensor simulator
-│   ├── server.js           # WebSocket server
-│   └── kinesisProducer.js  # AWS Kinesis producer
+│   ├── server.js           # WebSocket + HTTP server
+│   ├── firebaseService.js  # Firebase Firestore integration
+│   └── public/
+│       ├── index.html      # Live dashboard
+│       ├── style.css       # Dashboard styles
+│       └── app.js          # WebSocket client + map logic
+├── serviceAccountKey.json  # Firebase credentials (not committed)
 ├── .env                    # Environment variables (not committed)
 ├── .gitignore
 └── README.md
 ```
 
-## Simulated Bike Data
+## 🚴 Simulated Bike Data
 
 Each bike sends the following data every second:
 
@@ -45,28 +54,44 @@ Each bike sends the following data every second:
 }
 ```
 
-## Setup
+## ⚙️ Setup
 
-1. Install dependencies:
+### 1. Install dependencies
+
 ```bash
 npm install
 ```
 
-2. Create `.env` file:
-```env
-AWS_REGION=eu-west-1
-AWS_ACCESS_KEY_ID=your_key
-AWS_SECRET_ACCESS_KEY=your_secret
-KINESIS_STREAM_NAME=bike-sharing-stream
-```
+### 2. Firebase Setup
 
-3. Run the server:
+- Go to [console.firebase.google.com](https://console.firebase.google.com)
+- Create a new project
+- Enable Firestore Database
+- Go to Project Settings → Service Accounts → Generate new private key
+- Save the file as `serviceAccountKey.json` in the root directory
+
+### 3. Run the server
+
 ```bash
 npm start
 ```
 
-## AWS Setup
+### 4. Open the dashboard
 
-- **Kinesis Data Stream:** `bike-sharing-stream`
-- **Lambda:** Reads from Kinesis, writes to DynamoDB
-- **DynamoDB:** Stores all bike telemetry data
+```
+http://localhost:8080
+```
+
+## 📊 Features
+
+- **Real-time simulation** of 5 bikes sending telemetry every second
+- **WebSocket** connection between server and dashboard
+- **Live map** showing bike locations using Leaflet.js
+- **Bike cards** showing speed, battery, and status
+- **Firebase Firestore** cloud storage for all telemetry data
+- **Auto-clear** database on every server restart
+
+## 🔒 Security
+
+- `serviceAccountKey.json` and `.env` are excluded from Git via `.gitignore`
+- Never commit sensitive credentials to version control
