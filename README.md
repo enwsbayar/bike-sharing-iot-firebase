@@ -44,8 +44,8 @@ Each bike sends the following data every second:
 ```json
 {
   "bike_id": "BIKE_01",
-  "lat": 39.933400,
-  "lon": 32.859700,
+  "lat": 39.9334,
+  "lon": 32.8597,
   "speed_kmh": 14.3,
   "battery": 78.0,
   "status": "active",
@@ -90,6 +90,10 @@ http://localhost:8080
 - **Bike cards** showing speed, battery, and status
 - **Firebase Firestore** cloud storage for all telemetry data
 - **Auto-clear** database on every server restart
+
+## Images
+
+![Dashboard](images/image.png)
 
 ## 🔒 Security
 
