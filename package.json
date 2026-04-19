@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-      "start": "node src/server.js",
-      "simulate": "node src/simulator.js"
+    "start": "node src/server.js",
+    "simulate": "node src/simulator.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
   "dependencies": {
     "aws-sdk": "^2.1693.0",
     "dotenv": "^17.4.2",
+    "firebase-admin": "^13.8.0",
     "uuid": "^13.0.0",
     "ws": "^8.20.0"
   }

@@ -1,6 +1,6 @@
 const WebSocket = require("ws");
 const { bikes, generateBikeData } = require("./simulator");
-const { sendToKinesis } = require("./kinesisProducer");
+const { sendToKinesis } = require("./firebaseService");
 
 const PORT = 8080;
 const wss = new WebSocket.Server({ port: PORT });
