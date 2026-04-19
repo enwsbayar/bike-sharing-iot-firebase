@@ -1,5 +1,5 @@
-const admin = require("firebase-admin");
-const serviceAccount = require("../serviceAccountKey.json");
+const admin = require('firebase-admin');
+const serviceAccount = require('../serviceAccountKey.json');
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -7,9 +7,17 @@ admin.initializeApp({
 
 const db = admin.firestore();
 
+async function clearCollection() {
+  const snapshot = await db.collection('bike_telemetry').get();
+  const batch = db.batch();
+  snapshot.docs.forEach(doc => batch.delete(doc.ref));
+  await batch.commit();
+  console.log('🗑️ Cleared old bike data from Firestore');
+}
+
 async function saveBikeData(data) {
   try {
-    await db.collection("bike_telemetry").add({
+    await db.collection('bike_telemetry').add({
       ...data,
       createdAt: admin.firestore.FieldValue.serverTimestamp(),
     });
@@ -19,4 +27,4 @@ async function saveBikeData(data) {
   }
 }
 
-module.exports = { saveBikeData };
+module.exports = { saveBikeData, clearCollection };
