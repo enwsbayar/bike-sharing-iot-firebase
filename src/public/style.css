@@ -1,0 +1,89 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #1a1a2e;
+  color: #fff;
+}
+
+header {
+  background: #16213e;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid #0f3460;
+}
+
+header h1 {
+  font-size: 1.4rem;
+  color: #00d4ff;
+}
+
+#status {
+  margin-left: auto;
+  font-size: 0.9rem;
+}
+
+#map {
+  height: 60vh;
+  width: 100%;
+}
+
+#bikes-container {
+  padding: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.bike-card {
+  background: #16213e;
+  border-radius: 10px;
+  padding: 15px;
+  width: 180px;
+  border: 1px solid #0f3460;
+  transition: all 0.3s;
+}
+
+.bike-card:hover {
+  border-color: #00d4ff;
+  transform: translateY(-2px);
+}
+
+.bike-card h3 {
+  color: #00d4ff;
+  margin-bottom: 8px;
+}
+
+.bike-card p {
+  font-size: 0.85rem;
+  margin: 3px 0;
+  color: #ccc;
+}
+
+.status-active {
+  color: #00ff88;
+}
+
+.status-low {
+  color: #ff4444;
+}
+
+.battery-bar {
+  height: 6px;
+  background: #333;
+  border-radius: 3px;
+  margin-top: 5px;
+}
+
+.battery-fill {
+  height: 100%;
+  border-radius: 3px;
+  background: #00ff88;
+  transition: width 0.5s;
+}
