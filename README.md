@@ -93,7 +93,7 @@ http://localhost:8080
 
 ## Images
 
-![Dashboard](images/image.png)
+![Dashboard](img/image.png)
 
 ## 🔒 Security
 
